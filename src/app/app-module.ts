@@ -34,4 +34,7 @@ registerLocaleData(en);
   ],
   bootstrap: [App]
 })
-export class AppModule { }
+export class AppModule {
+
+
+}

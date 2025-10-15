@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 export class Register {
 
   registerForm!: FormGroup;
+  imgUrl: String = "https://i.pinimg.com/474x/7c/90/43/7c90430c0c5d28999a809ee08937cd63.jpg"
 
   constructor(private fb: FormBuilder,
     private authService: Auth,
