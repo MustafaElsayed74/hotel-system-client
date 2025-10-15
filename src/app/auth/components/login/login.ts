@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Auth } from '../../services/auth/auth';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { Router } from '@angular/router';
+import { StorageService } from '../../services/storage/storage-service';
 
 @Component({
   selector: 'app-login',
@@ -32,8 +33,15 @@ export class Login {
 
   submitForm() {
     this.authService.login(this.loginForm.value).subscribe(result => {
-
       console.log(result);
+      if (result.userId != null) {
+        const user = {
+          id: result.userId,
+          role: result.userRole
+        }
+        StorageService.saveUser(user);
+        StorageService.saveToken(result.jwt);
+      }
 
     }, error => {
       this.message.error("Bad Credentials", { nzDuration: 5000 });
