@@ -41,6 +41,13 @@ export class Login {
         }
         StorageService.saveUser(user);
         StorageService.saveToken(result.jwt);
+
+        if (StorageService.isAdminLoggedIn()) {
+          this.router.navigateByUrl('/admin/dashboard')
+        } else if (StorageService.isCustomerLoggedIn()) {
+          this.router.navigateByUrl('/customer/rooms')
+        }
+
       }
 
     }, error => {

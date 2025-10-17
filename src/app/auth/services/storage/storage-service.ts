@@ -44,7 +44,7 @@ export class StorageService {
   }
 
   static isAdminLoggedIn(): boolean {
-    if (this.getToken == null) {
+    if (this.getToken() == null) {
       return false
     }
     const role: string = this.getUserRole();
@@ -53,7 +53,7 @@ export class StorageService {
 
 
   static isCustomerLoggedIn(): boolean {
-    if (this.getToken == null) {
+    if (this.getToken() == null) {
       return false
     }
     const role: string = this.getUserRole();
