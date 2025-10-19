@@ -20,13 +20,28 @@ export class AdminService {
 
   }
 
-
-  getRooms(pageNumber: number): Observable<any> {
-    return this.http.get(BASIC_URL + `api/admin/rooms/${pageNumber}`, {
+  updateRoom(id: number, roomDto: any): Observable<any> {
+    return this.http.put(BASIC_URL + `api/admin/room/${id}`, roomDto, {
       headers: this.createAuthorizationHeader()
     })
 
   }
+
+  getRooms(pageNumber: number): Observable<any> {
+    return this.http.get(BASIC_URL + `api/admin/rooms/${pageNumber}`, {
+      headers: this.createAuthorizationHeader()
+    });
+
+  }
+
+
+  getRoomById(id: number): Observable<any> {
+    return this.http.get(BASIC_URL + `api/admin/room/${id}`, {
+      headers: this.createAuthorizationHeader()
+    });
+  }
+
+
 
 
   createAuthorizationHeader() {
