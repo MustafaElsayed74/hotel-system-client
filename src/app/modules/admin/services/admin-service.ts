@@ -14,12 +14,20 @@ export class AdminService {
 
 
   createRoom(roomDto: any): Observable<any> {
-
     return this.http.post(BASIC_URL + 'api/admin/room', roomDto, {
       headers: this.createAuthorizationHeader()
     })
 
   }
+
+
+  getRooms(pageNumber: number): Observable<any> {
+    return this.http.get(BASIC_URL + `api/admin/rooms/${pageNumber}`, {
+      headers: this.createAuthorizationHeader()
+    })
+
+  }
+
 
   createAuthorizationHeader() {
     let authHeaders: HttpHeaders = new HttpHeaders();
@@ -28,5 +36,7 @@ export class AdminService {
       'Bearer ' + StorageService.getToken()
     )
   }
+
+
 
 }

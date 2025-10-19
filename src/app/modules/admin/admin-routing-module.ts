@@ -5,11 +5,8 @@ import { Dashboard } from './components/dashboard/dashboard';
 import { CreateRoom } from './components/create-room/create-room';
 
 const routes: Routes = [
-  { path: '', component: Admin },
   { path: 'dashboard', component: Dashboard },
   { path: 'room', component: CreateRoom },
-
-
 ];
 
 @NgModule({
