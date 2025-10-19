@@ -9,9 +9,9 @@
         <nz-card style="width: 300px; margin: 16px" [nzActions]="[actionEdit, actionDelete]">
             <nz-skeleton [nzActive]="true" [nzLoading]="loading" [nzAvatar]="{ size: 'large' }">
                 <nz-card-meta [nzAvatar]="avatarTemplate" nzTitle="{{ room.name }}"
-                    nzDescription="Type: {{ room.type | titlecase  }}">
+                    nzDescription="Type: {{ room.type }}">
                 </nz-card-meta>
-                <nz-card-meta style="margin-left: 49px;" nzDescription="Price: {{ room.price |currency}}">
+                <nz-card-meta style="margin-left: 49px;" nzDescription="Price: {{ room.price }}">
                 </nz-card-meta>
             </nz-skeleton>
         </nz-card>
@@ -31,4 +31,9 @@
 
     </div>
 
+</div>
+
+<div class="pagination">
+    <nz-pagination [nzPageIndex]="currentPage" [nzTotal]="total" nzPageSize="6"
+        (nzPageIndexChange)=pageIndexChange($event)></nz-pagination>
 </div>

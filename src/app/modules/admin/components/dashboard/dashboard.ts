@@ -11,7 +11,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 })
 export class Dashboard {
 
-  pageNumber: number = 1;
+  currentPage: number = 1;
   rooms = [];
   total: any;
   loading = false;
@@ -23,17 +23,20 @@ export class Dashboard {
 
 
   getRooms() {
-    this.adminService.getRooms(this.pageNumber - 1).subscribe(result => {
+    this.adminService.getRooms(this.currentPage - 1).subscribe(result => {
 
       console.log(result);
       this.rooms = result.rooms;
-      this.total = result.totalPages * 1;
+      this.total = result.totalPages * 6;
 
     });
   }
 
 
-
+  pageIndexChange(value: any) {
+    this.currentPage = value;
+    this.getRooms();
+  }
 
 
 }
